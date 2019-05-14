@@ -15,7 +15,9 @@
  */
 #define LOG_TAG "AudioEffectHAL"
 
-#include <android/hardware/audio/effect/2.0/IEffectsFactory.h>
+
+
+#include <android/hardware/audio/effect/4.0/IEffectsFactory.h>
 
 #include <android-base/logging.h>
 #include <binder/ProcessState.h>
@@ -27,8 +29,8 @@
 using android::hardware::configureRpcThreadpool;
 using android::hardware::joinRpcThreadpool;
 
-using ::android::hardware::audio::effect::V2_0::IEffectsFactory;
-using ::android::hardware::audio::effect::V2_0::renesas::EffectsFactory;
+using ::android::hardware::audio::effect::CPP_VERSION::IEffectsFactory;
+using ::android::hardware::audio::effect::CPP_VERSION::renesas::EffectsFactory;
 using ::android::sp;
 
 int main() {

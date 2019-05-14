@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,33 @@
  */
 
 #define LOG_TAG "BassBoost_HAL"
-#include <system/audio_effects/effect_bassboost.h>
-#include <android/log.h>
 
 #include "BassBoostEffect.h"
+
+#include <android/log.h>
+#include <system/audio_effects/effect_bassboost.h>
+
+#include "VersionUtils.h"
 
 namespace android {
 namespace hardware {
 namespace audio {
 namespace effect {
-namespace V2_0 {
+namespace CPP_VERSION {
 namespace renesas {
 
-BassBoostEffect::BassBoostEffect(effect_handle_t handle)
-        : mEffect(new Effect(handle)) {
-}
+BassBoostEffect::BassBoostEffect(effect_handle_t handle) : mEffect(new Effect(handle)) {}
 
 BassBoostEffect::~BassBoostEffect() {}
 
-// Methods from ::android::hardware::audio::effect::V2_0::IEffect follow.
+// Methods from ::android::hardware::audio::effect::CPP_VERSION::IEffect follow.
 Return<Result> BassBoostEffect::init() {
     return mEffect->init();
 }
 
 Return<Result> BassBoostEffect::setConfig(
-        const EffectConfig& config,
-        const sp<IEffectBufferProviderCallback>& inputBufferProvider,
-        const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
+    const EffectConfig& config, const sp<IEffectBufferProviderCallback>& inputBufferProvider,
+    const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
     return mEffect->setConfig(config, inputBufferProvider, outputBufferProvider);
 }
 
@@ -57,17 +57,16 @@ Return<Result> BassBoostEffect::disable() {
     return mEffect->disable();
 }
 
-Return<Result> BassBoostEffect::setDevice(AudioDevice device) {
+Return<Result> BassBoostEffect::setDevice(AudioDeviceBitfield device) {
     return mEffect->setDevice(device);
 }
 
-Return<void> BassBoostEffect::setAndGetVolume(
-        const hidl_vec<uint32_t>& volumes, setAndGetVolume_cb _hidl_cb) {
+Return<void> BassBoostEffect::setAndGetVolume(const hidl_vec<uint32_t>& volumes,
+                                              setAndGetVolume_cb _hidl_cb) {
     return mEffect->setAndGetVolume(volumes, _hidl_cb);
 }
 
-Return<Result> BassBoostEffect::volumeChangeNotification(
-        const hidl_vec<uint32_t>& volumes) {
+Return<Result> BassBoostEffect::volumeChangeNotification(const hidl_vec<uint32_t>& volumes) {
     return mEffect->volumeChangeNotification(volumes);
 }
 
@@ -76,13 +75,12 @@ Return<Result> BassBoostEffect::setAudioMode(AudioMode mode) {
 }
 
 Return<Result> BassBoostEffect::setConfigReverse(
-        const EffectConfig& config,
-        const sp<IEffectBufferProviderCallback>& inputBufferProvider,
-        const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
+    const EffectConfig& config, const sp<IEffectBufferProviderCallback>& inputBufferProvider,
+    const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
     return mEffect->setConfigReverse(config, inputBufferProvider, outputBufferProvider);
 }
 
-Return<Result> BassBoostEffect::setInputDevice(AudioDevice device) {
+Return<Result> BassBoostEffect::setInputDevice(AudioDeviceBitfield device) {
     return mEffect->setInputDevice(device);
 }
 
@@ -95,7 +93,7 @@ Return<void> BassBoostEffect::getConfigReverse(getConfigReverse_cb _hidl_cb) {
 }
 
 Return<void> BassBoostEffect::getSupportedAuxChannelsConfigs(
-        uint32_t maxConfigs, getSupportedAuxChannelsConfigs_cb _hidl_cb) {
+    uint32_t maxConfigs, getSupportedAuxChannelsConfigs_cb _hidl_cb) {
     return mEffect->getSupportedAuxChannelsConfigs(maxConfigs, _hidl_cb);
 }
 
@@ -103,8 +101,7 @@ Return<void> BassBoostEffect::getAuxChannelsConfig(getAuxChannelsConfig_cb _hidl
     return mEffect->getAuxChannelsConfig(_hidl_cb);
 }
 
-Return<Result> BassBoostEffect::setAuxChannelsConfig(
-        const EffectAuxChannelsConfig& config) {
+Return<Result> BassBoostEffect::setAuxChannelsConfig(const EffectAuxChannelsConfig& config) {
     return mEffect->setAuxChannelsConfig(config);
 }
 
@@ -120,53 +117,43 @@ Return<void> BassBoostEffect::getDescriptor(getDescriptor_cb _hidl_cb) {
     return mEffect->getDescriptor(_hidl_cb);
 }
 
-Return<void> BassBoostEffect::prepareForProcessing(
-        prepareForProcessing_cb _hidl_cb) {
+Return<void> BassBoostEffect::prepareForProcessing(prepareForProcessing_cb _hidl_cb) {
     return mEffect->prepareForProcessing(_hidl_cb);
 }
 
-Return<Result> BassBoostEffect::setProcessBuffers(
-        const AudioBuffer& inBuffer, const AudioBuffer& outBuffer) {
+Return<Result> BassBoostEffect::setProcessBuffers(const AudioBuffer& inBuffer,
+                                                  const AudioBuffer& outBuffer) {
     return mEffect->setProcessBuffers(inBuffer, outBuffer);
 }
 
-Return<void> BassBoostEffect::command(
-        uint32_t commandId,
-        const hidl_vec<uint8_t>& data,
-        uint32_t resultMaxSize,
-        command_cb _hidl_cb) {
+Return<void> BassBoostEffect::command(uint32_t commandId, const hidl_vec<uint8_t>& data,
+                                      uint32_t resultMaxSize, command_cb _hidl_cb) {
     return mEffect->command(commandId, data, resultMaxSize, _hidl_cb);
 }
 
-Return<Result> BassBoostEffect::setParameter(
-        const hidl_vec<uint8_t>& parameter, const hidl_vec<uint8_t>& value) {
+Return<Result> BassBoostEffect::setParameter(const hidl_vec<uint8_t>& parameter,
+                                             const hidl_vec<uint8_t>& value) {
     return mEffect->setParameter(parameter, value);
 }
 
-Return<void> BassBoostEffect::getParameter(
-        const hidl_vec<uint8_t>& parameter,
-        uint32_t valueMaxSize,
-        getParameter_cb _hidl_cb) {
+Return<void> BassBoostEffect::getParameter(const hidl_vec<uint8_t>& parameter,
+                                           uint32_t valueMaxSize, getParameter_cb _hidl_cb) {
     return mEffect->getParameter(parameter, valueMaxSize, _hidl_cb);
 }
 
 Return<void> BassBoostEffect::getSupportedConfigsForFeature(
-        uint32_t featureId,
-        uint32_t maxConfigs,
-        uint32_t configSize,
-        getSupportedConfigsForFeature_cb _hidl_cb) {
+    uint32_t featureId, uint32_t maxConfigs, uint32_t configSize,
+    getSupportedConfigsForFeature_cb _hidl_cb) {
     return mEffect->getSupportedConfigsForFeature(featureId, maxConfigs, configSize, _hidl_cb);
 }
 
-Return<void> BassBoostEffect::getCurrentConfigForFeature(
-        uint32_t featureId,
-        uint32_t configSize,
-        getCurrentConfigForFeature_cb _hidl_cb) {
+Return<void> BassBoostEffect::getCurrentConfigForFeature(uint32_t featureId, uint32_t configSize,
+                                                         getCurrentConfigForFeature_cb _hidl_cb) {
     return mEffect->getCurrentConfigForFeature(featureId, configSize, _hidl_cb);
 }
 
-Return<Result> BassBoostEffect::setCurrentConfigForFeature(
-        uint32_t featureId, const hidl_vec<uint8_t>& configData) {
+Return<Result> BassBoostEffect::setCurrentConfigForFeature(uint32_t featureId,
+                                                           const hidl_vec<uint8_t>& configData) {
     return mEffect->setCurrentConfigForFeature(featureId, configData);
 }
 
@@ -174,21 +161,25 @@ Return<Result> BassBoostEffect::close() {
     return mEffect->close();
 }
 
-// Methods from ::android::hardware::audio::effect::V2_0::IBassBoostEffect follow.
-Return<void> BassBoostEffect::isStrengthSupported(isStrengthSupported_cb _hidl_cb)  {
+Return<void> BassBoostEffect::debug(const hidl_handle& fd, const hidl_vec<hidl_string>& options) {
+    return mEffect->debug(fd, options);
+}
+
+// Methods from ::android::hardware::audio::effect::CPP_VERSION::IBassBoostEffect follow.
+Return<void> BassBoostEffect::isStrengthSupported(isStrengthSupported_cb _hidl_cb) {
     return mEffect->getIntegerParam(BASSBOOST_PARAM_STRENGTH_SUPPORTED, _hidl_cb);
 }
 
-Return<Result> BassBoostEffect::setStrength(uint16_t strength)  {
+Return<Result> BassBoostEffect::setStrength(uint16_t strength) {
     return mEffect->setParam(BASSBOOST_PARAM_STRENGTH, strength);
 }
 
-Return<void> BassBoostEffect::getStrength(getStrength_cb _hidl_cb)  {
+Return<void> BassBoostEffect::getStrength(getStrength_cb _hidl_cb) {
     return mEffect->getIntegerParam(BASSBOOST_PARAM_STRENGTH, _hidl_cb);
 }
 
 }  // namespace renesas
-}  // namespace V2_0
+}  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio
 }  // namespace hardware

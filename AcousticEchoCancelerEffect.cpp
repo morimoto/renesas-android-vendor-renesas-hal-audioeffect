@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2016 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,33 +15,34 @@
  */
 
 #define LOG_TAG "AEC_Effect_HAL"
-#include <system/audio_effects/effect_aec.h>
-#include <android/log.h>
 
 #include "AcousticEchoCancelerEffect.h"
+
+#include <android/log.h>
+#include <system/audio_effects/effect_aec.h>
+
+#include "VersionUtils.h"
 
 namespace android {
 namespace hardware {
 namespace audio {
 namespace effect {
-namespace V2_0 {
+namespace CPP_VERSION {
 namespace renesas {
 
 AcousticEchoCancelerEffect::AcousticEchoCancelerEffect(effect_handle_t handle)
-        : mEffect(new Effect(handle)) {
-}
+    : mEffect(new Effect(handle)) {}
 
 AcousticEchoCancelerEffect::~AcousticEchoCancelerEffect() {}
 
-// Methods from ::android::hardware::audio::effect::V2_0::IEffect follow.
+// Methods from ::android::hardware::audio::effect::CPP_VERSION::IEffect follow.
 Return<Result> AcousticEchoCancelerEffect::init() {
     return mEffect->init();
 }
 
 Return<Result> AcousticEchoCancelerEffect::setConfig(
-        const EffectConfig& config,
-        const sp<IEffectBufferProviderCallback>& inputBufferProvider,
-        const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
+    const EffectConfig& config, const sp<IEffectBufferProviderCallback>& inputBufferProvider,
+    const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
     return mEffect->setConfig(config, inputBufferProvider, outputBufferProvider);
 }
 
@@ -57,17 +58,17 @@ Return<Result> AcousticEchoCancelerEffect::disable() {
     return mEffect->disable();
 }
 
-Return<Result> AcousticEchoCancelerEffect::setDevice(AudioDevice device) {
+Return<Result> AcousticEchoCancelerEffect::setDevice(AudioDeviceBitfield device) {
     return mEffect->setDevice(device);
 }
 
-Return<void> AcousticEchoCancelerEffect::setAndGetVolume(
-        const hidl_vec<uint32_t>& volumes, setAndGetVolume_cb _hidl_cb) {
+Return<void> AcousticEchoCancelerEffect::setAndGetVolume(const hidl_vec<uint32_t>& volumes,
+                                                         setAndGetVolume_cb _hidl_cb) {
     return mEffect->setAndGetVolume(volumes, _hidl_cb);
 }
 
 Return<Result> AcousticEchoCancelerEffect::volumeChangeNotification(
-        const hidl_vec<uint32_t>& volumes) {
+    const hidl_vec<uint32_t>& volumes) {
     return mEffect->volumeChangeNotification(volumes);
 }
 
@@ -76,13 +77,12 @@ Return<Result> AcousticEchoCancelerEffect::setAudioMode(AudioMode mode) {
 }
 
 Return<Result> AcousticEchoCancelerEffect::setConfigReverse(
-        const EffectConfig& config,
-        const sp<IEffectBufferProviderCallback>& inputBufferProvider,
-        const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
+    const EffectConfig& config, const sp<IEffectBufferProviderCallback>& inputBufferProvider,
+    const sp<IEffectBufferProviderCallback>& outputBufferProvider) {
     return mEffect->setConfigReverse(config, inputBufferProvider, outputBufferProvider);
 }
 
-Return<Result> AcousticEchoCancelerEffect::setInputDevice(AudioDevice device) {
+Return<Result> AcousticEchoCancelerEffect::setInputDevice(AudioDeviceBitfield device) {
     return mEffect->setInputDevice(device);
 }
 
@@ -95,7 +95,7 @@ Return<void> AcousticEchoCancelerEffect::getConfigReverse(getConfigReverse_cb _h
 }
 
 Return<void> AcousticEchoCancelerEffect::getSupportedAuxChannelsConfigs(
-        uint32_t maxConfigs, getSupportedAuxChannelsConfigs_cb _hidl_cb) {
+    uint32_t maxConfigs, getSupportedAuxChannelsConfigs_cb _hidl_cb) {
     return mEffect->getSupportedAuxChannelsConfigs(maxConfigs, _hidl_cb);
 }
 
@@ -104,7 +104,7 @@ Return<void> AcousticEchoCancelerEffect::getAuxChannelsConfig(getAuxChannelsConf
 }
 
 Return<Result> AcousticEchoCancelerEffect::setAuxChannelsConfig(
-        const EffectAuxChannelsConfig& config) {
+    const EffectAuxChannelsConfig& config) {
     return mEffect->setAuxChannelsConfig(config);
 }
 
@@ -120,53 +120,44 @@ Return<void> AcousticEchoCancelerEffect::getDescriptor(getDescriptor_cb _hidl_cb
     return mEffect->getDescriptor(_hidl_cb);
 }
 
-Return<void> AcousticEchoCancelerEffect::prepareForProcessing(
-        prepareForProcessing_cb _hidl_cb) {
+Return<void> AcousticEchoCancelerEffect::prepareForProcessing(prepareForProcessing_cb _hidl_cb) {
     return mEffect->prepareForProcessing(_hidl_cb);
 }
 
-Return<Result> AcousticEchoCancelerEffect::setProcessBuffers(
-        const AudioBuffer& inBuffer, const AudioBuffer& outBuffer) {
+Return<Result> AcousticEchoCancelerEffect::setProcessBuffers(const AudioBuffer& inBuffer,
+                                                             const AudioBuffer& outBuffer) {
     return mEffect->setProcessBuffers(inBuffer, outBuffer);
 }
 
-Return<void> AcousticEchoCancelerEffect::command(
-        uint32_t commandId,
-        const hidl_vec<uint8_t>& data,
-        uint32_t resultMaxSize,
-        command_cb _hidl_cb) {
+Return<void> AcousticEchoCancelerEffect::command(uint32_t commandId, const hidl_vec<uint8_t>& data,
+                                                 uint32_t resultMaxSize, command_cb _hidl_cb) {
     return mEffect->command(commandId, data, resultMaxSize, _hidl_cb);
 }
 
-Return<Result> AcousticEchoCancelerEffect::setParameter(
-        const hidl_vec<uint8_t>& parameter, const hidl_vec<uint8_t>& value) {
+Return<Result> AcousticEchoCancelerEffect::setParameter(const hidl_vec<uint8_t>& parameter,
+                                                        const hidl_vec<uint8_t>& value) {
     return mEffect->setParameter(parameter, value);
 }
 
-Return<void> AcousticEchoCancelerEffect::getParameter(
-        const hidl_vec<uint8_t>& parameter,
-        uint32_t valueMaxSize,
-        getParameter_cb _hidl_cb) {
+Return<void> AcousticEchoCancelerEffect::getParameter(const hidl_vec<uint8_t>& parameter,
+                                                      uint32_t valueMaxSize,
+                                                      getParameter_cb _hidl_cb) {
     return mEffect->getParameter(parameter, valueMaxSize, _hidl_cb);
 }
 
 Return<void> AcousticEchoCancelerEffect::getSupportedConfigsForFeature(
-        uint32_t featureId,
-        uint32_t maxConfigs,
-        uint32_t configSize,
-        getSupportedConfigsForFeature_cb _hidl_cb) {
+    uint32_t featureId, uint32_t maxConfigs, uint32_t configSize,
+    getSupportedConfigsForFeature_cb _hidl_cb) {
     return mEffect->getSupportedConfigsForFeature(featureId, maxConfigs, configSize, _hidl_cb);
 }
 
 Return<void> AcousticEchoCancelerEffect::getCurrentConfigForFeature(
-        uint32_t featureId,
-        uint32_t configSize,
-        getCurrentConfigForFeature_cb _hidl_cb) {
+    uint32_t featureId, uint32_t configSize, getCurrentConfigForFeature_cb _hidl_cb) {
     return mEffect->getCurrentConfigForFeature(featureId, configSize, _hidl_cb);
 }
 
 Return<Result> AcousticEchoCancelerEffect::setCurrentConfigForFeature(
-        uint32_t featureId, const hidl_vec<uint8_t>& configData) {
+    uint32_t featureId, const hidl_vec<uint8_t>& configData) {
     return mEffect->setCurrentConfigForFeature(featureId, configData);
 }
 
@@ -174,17 +165,23 @@ Return<Result> AcousticEchoCancelerEffect::close() {
     return mEffect->close();
 }
 
-// Methods from ::android::hardware::audio::effect::V2_0::IAcousticEchoCancelerEffect follow.
-Return<Result> AcousticEchoCancelerEffect::setEchoDelay(uint32_t echoDelayMs)  {
+Return<void> AcousticEchoCancelerEffect::debug(const hidl_handle& fd,
+                                               const hidl_vec<hidl_string>& options) {
+    return mEffect->debug(fd, options);
+}
+
+// Methods from ::android::hardware::audio::effect::CPP_VERSION::IAcousticEchoCancelerEffect
+// follow.
+Return<Result> AcousticEchoCancelerEffect::setEchoDelay(uint32_t echoDelayMs) {
     return mEffect->setParam(AEC_PARAM_ECHO_DELAY, echoDelayMs);
 }
 
-Return<void> AcousticEchoCancelerEffect::getEchoDelay(getEchoDelay_cb _hidl_cb)  {
+Return<void> AcousticEchoCancelerEffect::getEchoDelay(getEchoDelay_cb _hidl_cb) {
     return mEffect->getIntegerParam(AEC_PARAM_ECHO_DELAY, _hidl_cb);
 }
 
 }  // namespace renesas
-}  // namespace V2_0
+}  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio
 }  // namespace hardware

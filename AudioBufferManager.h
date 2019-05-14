@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2017 The Android Open Source Project
+ * Copyright (C) 2018 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,35 +14,37 @@
  * limitations under the License.
  */
 
-#ifndef android_hardware_audio_effect_V2_0_AudioBufferManager_H_
-#define android_hardware_audio_effect_V2_0_AudioBufferManager_H_
+#ifndef ANDROID_HARDWARE_AUDIO_EFFECT_AUDIO_BUFFER_MANAGER_H_
+#define ANDROID_HARDWARE_AUDIO_EFFECT_AUDIO_BUFFER_MANAGER_H_
+
+#include PATH(android/hardware/audio/effect/FILE_VERSION/types.h)
 
 #include <mutex>
 
-#include <android/hardware/audio/effect/2.0/types.h>
 #include <android/hidl/memory/1.0/IMemory.h>
 #include <system/audio_effect.h>
-#include <utils/RefBase.h>
 #include <utils/KeyedVector.h>
+#include <utils/RefBase.h>
 #include <utils/Singleton.h>
 
-using ::android::hardware::audio::effect::V2_0::AudioBuffer;
+using ::android::hardware::audio::effect::CPP_VERSION::AudioBuffer;
 using ::android::hidl::memory::V1_0::IMemory;
 
 namespace android {
 namespace hardware {
 namespace audio {
 namespace effect {
-namespace V2_0 {
+namespace CPP_VERSION {
 namespace renesas {
 
 class AudioBufferWrapper : public RefBase {
-  public:
+   public:
     explicit AudioBufferWrapper(const AudioBuffer& buffer);
     virtual ~AudioBufferWrapper();
     bool init();
     audio_buffer_t* getHalBuffer() { return &mHalBuffer; }
-  private:
+
+   private:
     AudioBufferWrapper(const AudioBufferWrapper&) = delete;
     void operator=(AudioBufferWrapper) = delete;
 
@@ -52,23 +54,23 @@ class AudioBufferWrapper : public RefBase {
 };
 
 }  // namespace renesas
-}  // namespace V2_0
+}  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio
 }  // namespace hardware
 }  // namespace android
 
-using ::android::hardware::audio::effect::V2_0::renesas::AudioBufferWrapper;
+using ::android::hardware::audio::effect::CPP_VERSION::renesas::AudioBufferWrapper;
 
 namespace android {
 
 // This class needs to be in 'android' ns because Singleton macros require that.
 class AudioBufferManager : public Singleton<AudioBufferManager> {
-  public:
+   public:
     bool wrap(const AudioBuffer& buffer, sp<AudioBufferWrapper>* wrapper);
 
-  private:
-    friend class hardware::audio::effect::V2_0::renesas::AudioBufferWrapper;
+   private:
+    friend class hardware::audio::effect::CPP_VERSION::renesas::AudioBufferWrapper;
 
     // Called by AudioBufferWrapper.
     void removeEntry(uint64_t id);
@@ -79,4 +81,4 @@ class AudioBufferManager : public Singleton<AudioBufferManager> {
 
 }  // namespace android
 
-#endif  // android_hardware_audio_effect_V2_0_AudioBufferManager_H_
+#endif  // ANDROID_HARDWARE_AUDIO_EFFECT_AUDIO_BUFFER_MANAGER_H_
