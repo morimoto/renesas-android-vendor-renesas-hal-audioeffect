@@ -1,4 +1,0 @@
-service audioeffect-4-0 /vendor/bin/hw/android.hardware.audio.effect@4.0-service.renesas
-    class hal
-    user system
-    group system

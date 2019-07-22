@@ -17,7 +17,7 @@
 
 
 
-#include <android/hardware/audio/effect/4.0/IEffectsFactory.h>
+#include <android/hardware/audio/effect/5.0/IEffectsFactory.h>
 
 #include <android-base/logging.h>
 #include <binder/ProcessState.h>

@@ -19,9 +19,9 @@ cc_binary {
     relative_install_path: "hw",
     proprietary: true,
 
-    name: "android.hardware.audio.effect@4.0-service.renesas",
-    init_rc: ["android.hardware.audio.effect@4.0-service.renesas.rc"],
-    vintf_fragments: ["android.hardware.audio.effect@4.0-service.renesas.xml"],
+    name: "android.hardware.audio.effect@5.0-service.renesas",
+    init_rc: ["android.hardware.audio.effect@5.0-service.renesas.rc"],
+    vintf_fragments: ["android.hardware.audio.effect@5.0-service.renesas.xml"],
 
     srcs: [
         "AcousticEchoCancelerEffect.cpp",
@@ -45,9 +45,9 @@ cc_binary {
     shared_libs: [
         "android.hidl.memory@1.0",
         "android.hardware.audio.common-util",
-        "android.hardware.audio.common@4.0",
-        "android.hardware.audio.common@4.0-util",
-        "android.hardware.audio.effect@4.0",
+        "android.hardware.audio.common@5.0",
+        "android.hardware.audio.common@5.0-util",
+        "android.hardware.audio.effect@5.0",
         "libbase",
         "libhidlbase",
         "libhidltransport",
@@ -71,8 +71,8 @@ cc_binary {
     ],
 
     cflags: [
-        "-DAUDIO_HAL_VERSION=V4_0",
-        "-DMAJOR_VERSION=4",
+        "-DAUDIO_HAL_VERSION=V5_0",
+        "-DMAJOR_VERSION=5",
         "-DMINOR_VERSION=0",
         "-include common/all-versions/VersionMacro.h",
     ],
