@@ -50,7 +50,6 @@ cc_binary {
         "android.hardware.audio.effect@5.0",
         "libbase",
         "libhidlbase",
-        "libhidltransport",
         "libhidlmemory",
         "libhardware",
         "libutils",
