@@ -28,7 +28,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 AcousticEchoCancelerEffect::AcousticEchoCancelerEffect(effect_handle_t handle)
     : mEffect(new Effect(handle)) {}
@@ -180,7 +180,7 @@ Return<void> AcousticEchoCancelerEffect::getEchoDelay(getEchoDelay_cb _hidl_cb) 
     return mEffect->getIntegerParam(AEC_PARAM_ECHO_DELAY, _hidl_cb);
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

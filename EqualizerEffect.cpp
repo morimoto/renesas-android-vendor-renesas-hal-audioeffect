@@ -29,7 +29,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 EqualizerEffect::EqualizerEffect(effect_handle_t handle) : mEffect(new Effect(handle)) {}
 
@@ -290,7 +290,7 @@ Return<void> EqualizerEffect::getAllProperties(getAllProperties_cb _hidl_cb) {
     return Void();
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

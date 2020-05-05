@@ -27,7 +27,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 AutomaticGainControlEffect::AutomaticGainControlEffect(effect_handle_t handle)
     : mEffect(new Effect(handle)) {}
@@ -225,7 +225,7 @@ Return<void> AutomaticGainControlEffect::getAllProperties(getAllProperties_cb _h
     return Void();
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

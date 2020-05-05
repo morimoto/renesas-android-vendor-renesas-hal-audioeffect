@@ -29,7 +29,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 using ::android::hardware::audio::common::CPP_VERSION::implementation::HidlUtils;
 
@@ -53,7 +53,7 @@ std::string uuidToString(const effect_uuid_t& halUuid) {
     return str;
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

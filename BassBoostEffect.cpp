@@ -28,7 +28,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 BassBoostEffect::BassBoostEffect(effect_handle_t handle) : mEffect(new Effect(handle)) {}
 
@@ -178,7 +178,7 @@ Return<void> BassBoostEffect::getStrength(getStrength_cb _hidl_cb) {
     return mEffect->getIntegerParam(BASSBOOST_PARAM_STRENGTH, _hidl_cb);
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

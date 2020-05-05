@@ -34,7 +34,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 using ::android::sp;
 using ::android::hardware::hidl_string;
@@ -103,7 +103,7 @@ struct BassBoostEffect : public IBassBoostEffect {
     virtual ~BassBoostEffect();
 };
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

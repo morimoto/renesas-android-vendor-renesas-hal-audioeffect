@@ -28,7 +28,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 using ::android::hardware::audio::effect::CPP_VERSION::EffectDescriptor;
 
@@ -36,7 +36,7 @@ void effectDescriptorFromHal(const effect_descriptor_t& halDescriptor,
                              EffectDescriptor* descriptor);
 std::string uuidToString(const effect_uuid_t& halUuid);
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

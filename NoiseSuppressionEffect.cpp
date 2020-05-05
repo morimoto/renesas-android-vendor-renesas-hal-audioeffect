@@ -27,7 +27,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 NoiseSuppressionEffect::NoiseSuppressionEffect(effect_handle_t handle)
     : mEffect(new Effect(handle)) {}
@@ -218,7 +218,7 @@ Return<void> NoiseSuppressionEffect::getAllProperties(getAllProperties_cb _hidl_
     return Void();
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

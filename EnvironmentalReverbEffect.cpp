@@ -28,7 +28,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 EnvironmentalReverbEffect::EnvironmentalReverbEffect(effect_handle_t handle)
     : mEffect(new Effect(handle)) {}
@@ -304,7 +304,7 @@ Return<void> EnvironmentalReverbEffect::getAllProperties(getAllProperties_cb _hi
     return Void();
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

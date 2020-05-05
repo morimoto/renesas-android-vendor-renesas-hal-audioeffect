@@ -28,7 +28,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 DownmixEffect::DownmixEffect(effect_handle_t handle) : mEffect(new Effect(handle)) {}
 
@@ -177,7 +177,7 @@ Return<void> DownmixEffect::getType(getType_cb _hidl_cb) {
     return Void();
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

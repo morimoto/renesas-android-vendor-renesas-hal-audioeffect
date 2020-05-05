@@ -40,7 +40,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 using ::android::sp;
 using ::android::hardware::hidl_string;
@@ -170,7 +170,6 @@ struct Effect : public IEffect {
     static const char* sContextCallToCommand;
     static const char* sContextCallFunction;
 
-    bool mIsClosed;
     effect_handle_t mHandle;
     sp<AudioBufferWrapper> mInBuffer;
     sp<AudioBufferWrapper> mOutBuffer;
@@ -228,7 +227,7 @@ struct Effect : public IEffect {
                          const sp<IEffectBufferProviderCallback>& outputBufferProvider);
 };
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

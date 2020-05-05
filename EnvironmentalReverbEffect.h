@@ -36,7 +36,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 using ::android::sp;
 using ::android::hardware::hidl_string;
@@ -133,7 +133,7 @@ struct EnvironmentalReverbEffect : public IEnvironmentalReverbEffect {
                          t_reverb_settings* halProperties);
 };
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

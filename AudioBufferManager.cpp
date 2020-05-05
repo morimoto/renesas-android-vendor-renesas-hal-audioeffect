@@ -54,7 +54,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 AudioBufferWrapper::AudioBufferWrapper(const AudioBuffer& buffer)
     : mHidlBuffer(buffer), mHalBuffer{0, {nullptr}} {}
@@ -82,7 +82,7 @@ bool AudioBufferWrapper::init() {
     return true;
 }
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio

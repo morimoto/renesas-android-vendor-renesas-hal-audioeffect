@@ -35,7 +35,7 @@ namespace hardware {
 namespace audio {
 namespace effect {
 namespace CPP_VERSION {
-namespace renesas {
+namespace implementation {
 
 class AudioBufferWrapper : public RefBase {
    public:
@@ -53,14 +53,14 @@ class AudioBufferWrapper : public RefBase {
     audio_buffer_t mHalBuffer;
 };
 
-}  // namespace renesas
+}  // namespace implementation
 }  // namespace CPP_VERSION
 }  // namespace effect
 }  // namespace audio
 }  // namespace hardware
 }  // namespace android
 
-using ::android::hardware::audio::effect::CPP_VERSION::renesas::AudioBufferWrapper;
+using ::android::hardware::audio::effect::CPP_VERSION::implementation::AudioBufferWrapper;
 
 namespace android {
 
@@ -70,7 +70,7 @@ class AudioBufferManager : public Singleton<AudioBufferManager> {
     bool wrap(const AudioBuffer& buffer, sp<AudioBufferWrapper>* wrapper);
 
    private:
-    friend class hardware::audio::effect::CPP_VERSION::renesas::AudioBufferWrapper;
+    friend class hardware::audio::effect::CPP_VERSION::implementation::AudioBufferWrapper;
 
     // Called by AudioBufferWrapper.
     void removeEntry(uint64_t id);
